@@ -137,7 +137,11 @@ XKit.extensions.xkit_preferences = new Object({
 
 		$("#new-xkit-control").click(function(event) {
 			if(!event.altKey) {
-				XKit.extensions.xkit_preferences.open();
+				if (XKit.installed.check("quick_preferences") === true && XKit.installed.enabled("quick_preferences") === true) {
+					XKit.extensions.quick_preferences.open();
+				} else {
+					XKit.extensions.xkit_preferences.open();
+				}
 			} else {
 				document.location.href = ("http://www.tumblr.com/help");
 			}
